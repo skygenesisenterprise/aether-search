@@ -24,6 +24,4 @@ router.post("/crawl", async (req, res) => {
   }
 });
 
-router.use("/example", exampleRoute);
-
 module.exports = router;

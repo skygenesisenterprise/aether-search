@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "concurrently \"next dev -H 0.0.0.0 --turbopack\" \"node src/api/server.js\"",
     "build": "next build",
-    "start": "next start",
+    "start": "concurrently \"next start\" \"node src/api/server.js\"",
+    "build:full": "npm run build && echo 'Backend ready for production'",
+    "start:backend": "node src/api/server.js",
+    "start:frontend": "next start", 
     "lint": "bunx biome lint --write && bunx tsc --noEmit",
     "format": "bunx biome format --write"
   },
