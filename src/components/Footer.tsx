@@ -14,7 +14,7 @@ export function Footer() {
               <span className="font-bold text-xl">Sky Genesis Enterprise</span>
             </Link>
             <p className="text-zinc-600 dark:text-zinc-400 text-sm">
-              Discover the universe of information with our custom search engine, designed for Sky Genesis Enterprise.
+              Discover the universe of information with our custom search engine, designed powered by Sky Genesis Enterprise.
             </p>
           </div>
           <div className="md:col-span-2 grid grid-cols-2 sm:grid-cols-3 gap-4">
@@ -27,12 +27,12 @@ export function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/api" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50">
+                  <Link href="https://wiki.skygenesisenterprise.com/api" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50">
                     API Access
                   </Link>
                 </li>
                 <li>
-                  <Link href="/enterprise" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50">
+                  <Link href="https://skygenesisenterprise.com" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50">
                     Enterprise Solutions
                   </Link>
                 </li>
@@ -42,17 +42,17 @@ export function Footer() {
               <h3 className="font-medium text-lg mb-3">Resources</h3>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <Link href="/docs" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50">
+                  <Link href="https://wiki.skygenesisenterprise.com" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50">
                     Documentation
                   </Link>
                 </li>
                 <li>
-                  <Link href="/help" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50">
+                  <Link href="https://skygenesisenterprise.com/help" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50">
                     Help Center
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blog" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50">
+                  <Link href="https://skygenesisenterprise.com/blog" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50">
                     Blog
                   </Link>
                 </li>
@@ -62,17 +62,17 @@ export function Footer() {
               <h3 className="font-medium text-lg mb-3">Company</h3>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <Link href="/about" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50">
+                  <Link href="https://skygenesisenterprise.com" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50">
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <Link href="/privacy" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50">
+                  <Link href="https://skygenesisenterprise.com/privacy" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50">
                     Privacy Policy
                   </Link>
                 </li>
                 <li>
-                  <Link href="/terms" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50">
+                  <Link href="https://skygenesisenterprise.com/terms" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50">
                     Terms of Service
                   </Link>
                 </li>
@@ -85,13 +85,13 @@ export function Footer() {
             © {currentYear} Sky Genesis Enterprise. All rights reserved.
           </p>
           <div className="flex gap-4">
-            <Link href="/privacy" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 text-sm">
+            <Link href="https://skygenesisenterprise.com/privacy" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 text-sm">
               Privacy
             </Link>
-            <Link href="/terms" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 text-sm">
+            <Link href="https://skygenesisenterprise.com/terms" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 text-sm">
               Terms
             </Link>
-            <Link href="/cookies" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 text-sm">
+            <Link href="https://skygenesisenterprise.com/cookies" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 text-sm">
               Cookies
             </Link>
           </div>

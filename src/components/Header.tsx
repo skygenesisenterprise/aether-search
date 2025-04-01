@@ -53,54 +53,8 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b bg-white dark:bg-zinc-950 dark:border-zinc-800">
-      <div className="container flex h-16 items-center justify-between px-4 md:px-6">
-        <div className="flex items-center gap-2">
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
-                <Menu className="h-5 w-5" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left" className="w-64">
-              <nav className="flex flex-col gap-4 mt-8">
-                <Link href="/" className="font-medium transition-colors hover:text-zinc-900 dark:hover:text-zinc-50">
-                  Home
-                </Link>
-                <Link href="/search" className="font-medium transition-colors hover:text-zinc-900 dark:hover:text-zinc-50">
-                  Advanced Search
-                </Link>
-                <Link href="/about" className="font-medium transition-colors hover:text-zinc-900 dark:hover:text-zinc-50">
-                  About
-                </Link>
-                {isAuthenticated && (
-                  <Link href="/profile" className="font-medium transition-colors hover:text-zinc-900 dark:hover:text-zinc-50">
-                    My Profile
-                  </Link>
-                )}
-              </nav>
-            </SheetContent>
-          </Sheet>
-          <Link href="/" className="flex items-center gap-2">
-            <Search className="h-5 w-5" />
-            <span className="font-bold text-xl hidden md:inline-block">Sky Genesis Enterprise</span>
-          </Link>
-        </div>
-        <nav className="hidden md:flex gap-6">
-          <Link href="/" className="font-medium transition-colors hover:text-zinc-900 dark:hover:text-zinc-50">
-            Home
-          </Link>
-          <Link href="/search" className="font-medium transition-colors hover:text-zinc-900 dark:hover:text-zinc-50">
-            Advanced Search
-          </Link>
-          <Link href="/about" className="font-medium transition-colors hover:text-zinc-900 dark:hover:text-zinc-50">
-            About
-          </Link>
-          {isAuthenticated && (
-            <Link href="/profile" className="font-medium transition-colors hover:text-zinc-900 dark:hover:text-zinc-50">
-              My Profile
-            </Link>
-          )}
-        </nav>
+      <div className="container flex h-16 items-center justify-end px-4 md:px-6">
+        {/* Thème et profil utilisateur alignés à droite */}
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="icon" onClick={toggleTheme}>
             {theme === "light" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}

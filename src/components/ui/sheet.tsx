@@ -68,6 +68,8 @@ const SheetContent = React.forwardRef<
         <X className="h-4 w-4" />
         <span className="sr-only">Close</span>
       </SheetPrimitive.Close>
+      {/* Ajout d'un titre accessible */}
+      <SheetTitle className="sr-only">Titre du dialogue</SheetTitle>
       {children}
     </SheetPrimitive.Content>
   </SheetPortal>
