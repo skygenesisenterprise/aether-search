@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sky Genesis Enterprise Search",
+  title: "Aether Search | Sky Genesis Enterprise",
   description: "A custom search engine for Sky Genesis Enterprise",
 };
 
