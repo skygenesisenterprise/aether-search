@@ -12,8 +12,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LogOut, Menu, Moon, Search, Settings, Sun, User } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { LogOut, Moon, Sun, User, Settings, Folder, FileText, Table, Calendar } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 
 export function Header() {
@@ -21,7 +20,14 @@ export function Header() {
   const { authState, logout } = useAuth();
   const { user, isAuthenticated } = authState;
 
-  // Initialize theme from localStorage on client side
+  // Liste des applications
+  const applications = [
+    { name: "Drive", icon: <Folder className="h-4 w-4 mr-2" />, link: "https://office.skygenesisenterprise.com/drive" },
+    { name: "Docs", icon: <FileText className="h-4 w-4 mr-2" />, link: "https://office.skygenesisenterprise.com/docs" },
+    { name: "Sheets", icon: <Table className="h-4 w-4 mr-2" />, link: "https://office.skygenesisenterprise.com/sheets" },
+    { name: "Calendar", icon: <Calendar className="h-4 w-4 mr-2" />, link: "https://office.skygenesisenterprise.com/calendar" },
+  ];
+
   useEffect(() => {
     const savedTheme = localStorage.getItem("skyGenesis_theme") || "light";
     setTheme(savedTheme as "light" | "dark");
@@ -45,7 +51,7 @@ export function Header() {
     if (!name) return "SG";
     return name
       .split(" ")
-      .map(part => part.charAt(0))
+      .map((part) => part.charAt(0))
       .join("")
       .toUpperCase()
       .substring(0, 2);
@@ -94,6 +100,16 @@ export function Header() {
                       Settings
                     </Link>
                   </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuLabel>Applications</DropdownMenuLabel>
+                  {applications.map((app) => (
+                    <DropdownMenuItem asChild key={app.name}>
+                      <Link href={app.link} className="flex items-center">
+                        {app.icon}
+                        {app.name}
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={handleLogout} className="flex items-center">
                     <LogOut className="h-4 w-4 mr-2" />
