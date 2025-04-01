@@ -1,20 +1,24 @@
-const { Pool } = require("pg");
+const { Sequelize } = require("sequelize");
 
-const pool = new Pool({
-  host: process.env.POSTGRES_HOST,
-  port: process.env.POSTGRES_PORT,
-  user: process.env.POSTGRES_USER,
-  password: process.env.POSTGRES_PASSWORD,
-  database: process.env.POSTGRES_DB,
-});
+// Créez une instance de Sequelize avec les informations de connexion
+const sequelize = new Sequelize(
+  process.env.POSTGRES_DB, // Nom de la base de données
+  process.env.POSTGRES_USER, // Nom d'utilisateur
+  process.env.POSTGRES_PASSWORD, // Mot de passe
+  {
+    host: process.env.POSTGRES_HOST, // Hôte (par exemple, localhost)
+    dialect: "postgres", // Type de base de données
+  }
+);
 
-pool.on("connect", () => {
-  console.log("Connected to PostgreSQL database");
-});
+// Testez la connexion à la base de données
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("Connected to the database successfully.");
+  })
+  .catch((err) => {
+    console.error("Unable to connect to the database:", err);
+  });
 
-pool.on("error", (err) => {
-  console.error("Error connecting to PostgreSQL database:", err);
-  process.exit(-1);
-});
-
-module.exports = pool;
+module.exports = sequelize;
