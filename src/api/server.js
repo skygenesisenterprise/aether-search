@@ -4,6 +4,7 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const routes = require("./routes");
+const statsRoutes = require("./routes/stats"); // Importer la route des statistiques
 const { errorHandler } = require("./middlewares/errorHandler");
 const sequelize = require("./utils/database"); // Connexion Sequelize
 const { crawlAndIndex } = require("./utils/crawler"); // Importer le crawler
@@ -19,6 +20,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes principales
 app.use("/api", routes);
+
+// Ajouter la route des statistiques
+app.use("/api", statsRoutes);
 
 // Middleware pour gérer les erreurs
 app.use(errorHandler);
