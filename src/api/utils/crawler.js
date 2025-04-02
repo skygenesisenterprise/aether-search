@@ -7,6 +7,21 @@ const CrawlerData = require("../models/crawlerModel"); // Modèle pour la base d
 const visitedUrls = new Set();
 
 /**
+ * Vérifie si une URL appartient au même domaine racine
+ * @param {string} url - URL à vérifier
+ * @param {string} rootDomain - Domaine racine (ex: wikipedia.org)
+ * @returns {boolean} - True si l'URL appartient au domaine racine
+ */
+function isSameRootDomain(url, rootDomain) {
+  try {
+    const hostname = new URL(url).hostname;
+    return hostname.endsWith(rootDomain);
+  } catch {
+    return false; // Si l'URL est invalide
+  }
+}
+
+/**
  * Fonction pour crawler une URL et extraire des données
  * @param {string} url - URL à crawler
  * @param {number} depth - Profondeur maximale de crawling
@@ -53,11 +68,26 @@ async function crawlAndIndex(url, depth = 2) {
       .map((_, element) => $(element).attr("href"))
       .get();
 
-    // Filtrer les liens internes vers le même domaine
-    const baseUrl = new URL(url).origin;
+    console.log(`Extracted ${links.length} links from ${url}:`);
+    links.forEach((link) => console.log(`  - Raw link: ${link}`));
+
+    // Filtrer les liens internes vers le même domaine racine
+    const rootDomain = new URL(url).hostname.split('.').slice(-2).join('.'); // Ex: wikipedia.org
     const internalLinks = links
-      .map((link) => new URL(link, baseUrl).href) // Résoudre les liens relatifs
-      .filter((link) => link.startsWith(baseUrl) && !visitedUrls.has(link)); // Garder uniquement les liens internes non visités
+      .map((link) => {
+        try {
+          // Si le lien commence par "//", ajoutez le protocole
+          if (link.startsWith("//")) {
+            return new URL(link, `https:${link}`).href;
+          }
+          // Résoudre les liens relatifs et absolus
+          return new URL(link, url).href;
+        } catch (err) {
+          console.error(`Invalid URL skipped: ${link}`);
+          return null;
+        }
+      })
+      .filter((link) => link && isSameRootDomain(link, rootDomain) && !visitedUrls.has(link)); // Garder uniquement les liens du même domaine racine non visités
 
     console.log(`Found ${internalLinks.length} internal links on ${url}:`);
     internalLinks.forEach((link) => console.log(`  - ${link}`));
