@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# **Aether Search - The Next-Generation Anonymous Search Engine**  
 
-## Getting Started
+Aether Search is an open-source, privacy-focused search engine designed to deliver **fast, accurate, and unbiased search results** while protecting user anonymity. Unlike traditional search engines, Aether Search does not track, profile, or sell user data.  
 
-First, run the development server:
+## **🚀 Features**  
+🔍 **Anonymous Search** – No tracking, no profiling, full privacy.  
+⚡ **Lightning-Fast Indexing** – Powered by our custom-built crawler and indexer.  
+🌍 **Global & Scalable** – Designed for enterprise and personal use.  
+🔒 **Decentralized Option** – Inspired by TOR, with a focus on secure search.  
+💡 **Customizable Experience** – Light/Dark mode, advanced filtering, and more.  
+🛠 **Open-Source & Extensible** – Easily modifiable for research and enterprise needs.  
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## **🛠 Tech Stack**  
+- **Backend:** Rust, Go, Python (for efficient crawling & indexing)  
+- **Frontend:** TypeScript (TSX) + React for a sleek UI  
+- **Database:** PostgreSQL for scalable and high-performance data storage  
+- **Security:** Advanced encryption & privacy-first design  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## **📖 How to Get Started**  
+1. Clone the repo:  
+   ```bash
+   git clone https://github.com/Sky-Genesis-Enterprise/aether-search.git
+   cd aether-search
+   ```
+2. Install dependencies & set up the database.  
+3. Run the server and start searching!  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## **🔗 Connect with Us**  
+💬 **Discord:** Join our dev community!  
+📢 **Twitter:** Stay updated with the latest releases.  
+📜 **GitHub Issues:** Report bugs, suggest features, or contribute!  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+🌟 **Aether Search is built for developers, privacy enthusiasts, and enterprises.** Help us shape the future of private search! 🚀
