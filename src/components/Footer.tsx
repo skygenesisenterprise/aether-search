@@ -22,11 +22,6 @@ export function Footer() {
               <h3 className="font-medium text-lg mb-3">Products</h3>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <Link href="/search" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50">
-                    Advanced Search
-                  </Link>
-                </li>
-                <li>
                   <Link href="https://wiki.skygenesisenterprise.com/api" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50">
                     API Access
                   </Link>
@@ -34,6 +29,11 @@ export function Footer() {
                 <li>
                   <Link href="https://skygenesisenterprise.com" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50">
                     Enterprise Solutions
+                  </Link>
+                </li>
+                <li>
+                  <Link href="https://skygenesisenterprise.com/aether-office" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50">
+                    Aether Office
                   </Link>
                 </li>
               </ul>
