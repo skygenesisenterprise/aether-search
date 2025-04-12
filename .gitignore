@@ -48,9 +48,9 @@ yarn-error.log*
 next-env.d.ts
 
 # Environnement variables
-/.github/
-/.vscode/
+.github*
+.vscode*
 
 # Python environment 
-/.venv
+.venv*
 /.venv/
