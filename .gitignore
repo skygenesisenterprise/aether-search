@@ -49,5 +49,8 @@ next-env.d.ts
 
 # Environnement variables
 /.github/
-/.venv/
 /.vscode/
+
+# Python environment 
+/.venv
+/.venv/
