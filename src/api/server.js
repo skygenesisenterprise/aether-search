@@ -1,60 +1,235 @@
-require("dotenv").config(); // Charger les variables d'environnement
+/**
+ * Search API server for the crawler
+ */
 
-const express = require("express");
-const morgan = require("morgan");
-const cors = require("cors");
-const routes = require("./routes");
-const statsRoutes = require("./routes/stats"); // Importer la route des statistiques
-const { errorHandler } = require("./middlewares/errorHandler");
-const sequelize = require("./utils/database"); // Connexion Sequelize
-const { crawlAndIndex } = require("./utils/crawler"); // Importer le crawler
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const { MongoClient, ObjectId } = require('mongodb');
+const config = require('./config');
+const { logInfo, logError } = require('./services/loggingService');
 
-const app = express();
-const PORT = process.env.PORT || 4000;
+// Express app
+let app;
+let server;
 
-// Middleware global
-app.use(cors());
-app.use(morgan("dev"));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+/**
+ * Start the search API server
+ * @param {number} port - Port to listen on
+ * @returns {Object} - Express app and server
+ */
+function startServer(port = 3000) {
+  // Create Express app
+  app = express();
 
-// Routes principales
-app.use("/api", routes);
+  // Apply middleware
+  app.use(cors());
+  app.use(bodyParser.json());
 
-// Ajouter la route des statistiques
-app.use("/api", statsRoutes);
+  // Set up routes
+  setupRoutes(app);
 
-// Middleware pour gérer les erreurs
-app.use(errorHandler);
+  // Start server
+  server = app.listen(port, () => {
+    logInfo(`Search API server running on port ${port}`);
+  });
 
-// Fonction pour démarrer le crawling continu
-async function startCrawler() {
-  console.log("Starting continuous crawling...");
-  const startUrl = "https://www.wikipedia.com"; // URL de départ
-  const maxDepth = 3; // Profondeur maximale du crawling
+  // Handle process termination
+  process.on('SIGINT', () => {
+    logInfo('Shutting down server');
+    server.close();
+    process.exit(0);
+  });
 
-  // Exécuter le crawler toutes les 10 minutes
-  setInterval(async () => {
-    console.log("Running crawler...");
-    try {
-      await crawlAndIndex(startUrl, maxDepth);
-      console.log("Crawling completed.");
-    } catch (error) {
-      console.error("Error during crawling:", error.message);
-    }
-  }, 10 * 60 * 1000); // 10 minutes en millisecondes
+  return { app, server };
 }
 
-// Synchroniser la base de données et démarrer le serveur
-sequelize
-  .sync({ alter: true }) // Synchroniser les modèles avec la base de données
-  .then(() => {
-    console.log("Database synchronized.");
-    app.listen(PORT, () => {
-      console.log(`API server is running on http://localhost:${PORT}`);
-      startCrawler(); // Démarrer le crawler après le lancement du serveur
+/**
+ * Set up API routes
+ * @param {Object} app - Express app
+ */
+function setupRoutes(app) {
+  // Root endpoint
+  app.get('/', (req, res) => {
+    res.json({
+      name: 'Web Crawler Search API',
+      version: '1.0.0',
+      endpoints: [
+        { path: '/search', method: 'GET', description: 'Search crawled pages' },
+        { path: '/pages', method: 'GET', description: 'Get all crawled pages with pagination' },
+        { path: '/pages/:id', method: 'GET', description: 'Get a specific page by ID' },
+        { path: '/stats', method: 'GET', description: 'Get crawler statistics' }
+      ]
     });
-  })
-  .catch((err) => {
-    console.error("Error synchronizing the database:", err);
   });
+
+  // Search endpoint
+  app.get('/search', async (req, res) => {
+    try {
+      const { q, limit = 10, offset = 0 } = req.query;
+
+      if (!q) {
+        return res.status(400).json({ error: 'Query parameter "q" is required' });
+      }
+
+      const client = new MongoClient(config.database.uri);
+      await client.connect();
+      const db = client.db(config.database.name);
+      const collection = db.collection(config.database.collections.pages);
+
+      // Perform text search
+      const results = await collection.find(
+        { $text: { $search: q } },
+        {
+          score: { $meta: 'textScore' },
+          // Limit fields to return
+          projection: {
+            url: 1,
+            title: 1,
+            description: 1,
+            bodyText: { $substrCP: ['$bodyText', 0, 200] }, // Snippet
+            timestamp: 1
+          }
+        }
+      )
+      .sort({ score: { $meta: 'textScore' } })
+      .skip(parseInt(offset))
+      .limit(parseInt(limit))
+      .toArray();
+
+      // Get total count
+      const total = await collection.countDocuments({ $text: { $search: q } });
+
+      await client.close();
+
+      res.json({
+        query: q,
+        total,
+        offset: parseInt(offset),
+        limit: parseInt(limit),
+        results
+      });
+    } catch (error) {
+      logError('Search error', { error: error.message });
+      res.status(500).json({ error: 'An error occurred during search' });
+    }
+  });
+
+  // Get all pages with pagination
+  app.get('/pages', async (req, res) => {
+    try {
+      const { limit = 10, offset = 0, domain } = req.query;
+
+      const client = new MongoClient(config.database.uri);
+      await client.connect();
+      const db = client.db(config.database.name);
+      const collection = db.collection(config.database.collections.pages);
+
+      // Build query
+      const query = {};
+      if (domain) {
+        query.url = { $regex: new RegExp(`^https?://(www\\.)?${domain}`) };
+      }
+
+      // Get pages
+      const pages = await collection.find(query)
+        .sort({ timestamp: -1 })
+        .skip(parseInt(offset))
+        .limit(parseInt(limit))
+        .project({
+          url: 1,
+          title: 1,
+          description: 1,
+          timestamp: 1
+        })
+        .toArray();
+
+      // Get total count
+      const total = await collection.countDocuments(query);
+
+      await client.close();
+
+      res.json({
+        total,
+        offset: parseInt(offset),
+        limit: parseInt(limit),
+        pages
+      });
+    } catch (error) {
+      logError('Pages listing error', { error: error.message });
+      res.status(500).json({ error: 'An error occurred while retrieving pages' });
+    }
+  });
+
+  // Get a specific page by ID
+  app.get('/pages/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
+
+      const client = new MongoClient(config.database.uri);
+      await client.connect();
+      const db = client.db(config.database.name);
+      const collection = db.collection(config.database.collections.pages);
+
+      // Get page
+      const page = await collection.findOne({ _id: id });
+
+      await client.close();
+
+      if (!page) {
+        return res.status(404).json({ error: 'Page not found' });
+      }
+
+      res.json(page);
+    } catch (error) {
+      logError('Page retrieval error', { error: error.message, id: req.params.id });
+      res.status(500).json({ error: 'An error occurred while retrieving the page' });
+    }
+  });
+
+  // Get crawler statistics
+  app.get('/stats', async (req, res) => {
+    try {
+      const client = new MongoClient(config.database.uri);
+      await client.connect();
+      const db = client.db(config.database.name);
+
+      // Get collection stats
+      const stats = {
+        pages: {
+          count: await db.collection(config.database.collections.pages).countDocuments(),
+          domains: (await db.collection(config.database.collections.pages).distinct('domain')).length
+        },
+        urls: {
+          count: await db.collection(config.database.collections.urls).countDocuments(),
+          pending: await db.collection(config.database.collections.urls).countDocuments({ status: 'pending' }),
+          completed: await db.collection(config.database.collections.urls).countDocuments({ status: 'completed' }),
+          error: await db.collection(config.database.collections.urls).countDocuments({ status: 'error' })
+        },
+        errors: await db.collection(config.database.collections.errors).countDocuments()
+      };
+
+      await client.close();
+
+      res.json(stats);
+    } catch (error) {
+      logError('Stats error', { error: error.message });
+      res.status(500).json({ error: 'An error occurred while retrieving statistics' });
+    }
+  });
+
+  // Handle 404
+  app.use((req, res) => {
+    res.status(404).json({ error: 'Endpoint not found' });
+  });
+
+  // Error handler
+  app.use((err, req, res, next) => {
+    logError('API error', { error: err.message, path: req.path });
+    res.status(500).json({ error: 'Internal server error' });
+  });
+}
+
+module.exports = {
+  startServer
+};

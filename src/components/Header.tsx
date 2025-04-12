@@ -89,7 +89,10 @@ export function Header() {
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild>
-                    <Link href="https://myaccount.skygenesisenterprise.com" className="flex items-center">
+                    <Link
+                      href={`https://myaccount.skygenesisenterprise.com/profile?userId=${user.id}&email=${encodeURIComponent(user.email)}`}
+                      className="flex items-center"
+                    >
                       <User className="h-4 w-4 mr-2" />
                       My Profile
                     </Link>
