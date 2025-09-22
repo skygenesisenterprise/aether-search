@@ -1,40 +1,45 @@
-# Contributor Covenant Code of Conduct
+# Code of Conduct
 
-## Our Pledge
+## Introduction
 
-We as members, contributors, and leaders pledge to make participation in our project and community a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
+As contributors and maintainers of this project, we pledge to make participation in our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation. We are committed to providing a friendly, safe, and welcoming environment for all, and we expect our community to reflect these values.
 
-We pledge to act and interact in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.
+This Code of Conduct applies to all interactions within the project, including on GitHub issues and pull requests, discussion forums, events, and any other communication channels associated with the project. It also applies to any behavior that can affect the project's reputation, including discussions outside of direct project-related channels.
 
-## Our Standards
+## Expected Behavior
 
-Examples of behavior that contributes to a positive environment include:
-- Using welcoming and inclusive language
-- Respecting differing viewpoints and experiences
-- Giving and gracefully accepting constructive feedback
-- Showing empathy toward others
+We expect everyone to:
 
-Examples of unacceptable behavior include:
-- The use of sexualized language or imagery and unwelcome sexual attention
-- Trolling, insulting or derogatory comments, and personal attacks
-- Public or private harassment
-- Publishing others' private information without explicit permission
+- **Be respectful and considerate** in your interactions with others.
+- **Offer constructive feedback** that is clear and actionable.
+- **Value diverse perspectives and experiences** and be open to learning from each other.
+- **Use inclusive language** and avoid offensive or discriminatory comments.
+- **Promote collaboration and inclusivity**. Encourage participation and make sure that everyone feels heard.
 
-## Our Responsibilities
+## Unacceptable Behavior
 
-Project maintainers are responsible for clarifying the standards of acceptable behavior and are expected to take appropriate and fair corrective action in response to any instances of unacceptable behavior.
+We do not tolerate behavior that is discriminatory, abusive, or otherwise harmful to others, including but not limited to:
 
-## Scope
+- **Harassment**: Offensive comments, insults, or slurs related to gender, gender identity and expression, sexual orientation, disability, age, body size, race, ethnicity, religion, or any other status.
+- **Threats or violence**: Explicit threats, violence, or advocating harm to others.
+- **Trolling and spamming**: Disrupting conversations, targeting individuals with unwanted messages, or flooding the discussion with irrelevant or harmful content.
+- **Personal attacks**: Ad hominem attacks, accusations, and any form of defamation or vilification.
+- **Exclusionary behavior**: Dismissing others’ ideas, blocking participation, or intentionally silencing others in discussions.
 
-This Code of Conduct applies within all project spaces and also applies when an individual is representing the project or its community in public spaces.
+## Reporting and Enforcement
 
-## Enforcement
+If you experience or witness any violations of this Code of Conduct, please report it to the project maintainers as soon as possible. The project team will review reports and take appropriate action. Reports should be made privately by email to **conduct@skygenesisenterprise.com** to ensure the confidentiality of sensitive information.
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project team at **conduct@skygenesisenterprie.com**. All complaints will be reviewed and investigated promptly and fairly.
+The following actions may be taken in response to unacceptable behavior:
 
-## Attribution
+- **Warning**: A formal warning outlining the violation and expected behavior moving forward.
+- **Temporary ban**: A short-term suspension of access to project-related communication channels.
+- **Permanent ban**: In severe cases, the individual may be permanently banned from contributing to the project.
 
-This Code of Conduct is adapted from the [Contributor Covenant][homepage], version 2.1, available at  
-https://www.contributor-covenant.org/version/2/1/code_of_conduct.html
+Maintainers have the final say in deciding how to handle violations of this Code of Conduct. We believe that a safe and respectful environment is crucial for the success of this project.
 
-[homepage]: https://www.search.skygenesisenterprise.com/github
+## Our Commitment
+
+We are committed to the continuous improvement of this Code of Conduct and its implementation. We encourage community members to contribute to the discussion and evolution of our community guidelines to ensure that they remain relevant and effective.
+
+Thank you for being part of our community and helping us make this project a welcoming and safe place for everyone.
