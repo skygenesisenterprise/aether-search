@@ -19,7 +19,7 @@ Aether Search is an open-source, privacy-focused search engine designed to deliv
 ## **📖 How to Get Started**  
 1. Clone the repo:  
    ```bash
-   git clone https://github.com/Sky-Genesis-Enterprise/aether-search.git
+   git clone https://github.com/skygenesisenterprise/aether-search.git
    cd aether-search
    ```
 2. Install dependencies & set up the database.  
@@ -31,3 +31,6 @@ Aether Search is an open-source, privacy-focused search engine designed to deliv
 📜 **GitHub Issues:** Report bugs, suggest features, or contribute!  
 
 🌟 **Aether Search is built for developers, privacy enthusiasts, and enterprises.** Help us shape the future of private search! 🚀
+
+## **📜 License**  
+The Project use the MIT License see [LICENCE](licence) for more information
