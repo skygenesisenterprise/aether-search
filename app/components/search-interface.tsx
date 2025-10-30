@@ -25,7 +25,7 @@ export default function SearchInterface() {
           <button className="text-sm text-foreground hover:underline">Boutique</button>
         </div>
         <div className="flex items-center gap-4">
-          <button className="text-sm text-foreground hover:underline">Gmail</button>
+          <button className="text-sm text-foreground hover:underline">Mail</button>
           <button className="text-sm text-foreground hover:underline">Images</button>
           <Button variant="default" size="sm" className="bg-foreground text-background hover:bg-foreground/90">
             Connexion
