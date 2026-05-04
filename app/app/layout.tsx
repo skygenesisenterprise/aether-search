@@ -17,10 +17,10 @@ const fontMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: {
     template: "%s | Sky Genesis Enterprise",
-    default: "Sky Genesis Enterprise",
+    default: "Aether Search - Explore the Digital Universe",
   },
   description:
-    "The Official Sky Genesis Enterprise website. Learn about our products, services, and how we can help your business thrive in the digital age.",
+    "Discover information at the speed of thought with Aether Search, your gateway to the digital cosmos.",
   icons: {
     icon: [
       {

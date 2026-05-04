@@ -1,7 +1,7 @@
 {
-  "name": "@company-website/app",
+  "name": "@aether-search/app",
   "version": "1.0.0",
-  "description": "Frontend application for Company Website",
+  "description": "Frontend application for Aether Search",
   "private": true,
   "type": "module",
   "scripts": {
