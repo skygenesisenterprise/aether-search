@@ -17,7 +17,7 @@ const fontMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: {
     template: "%s | Sky Genesis Enterprise",
-    default: "Aether Search - Explore the Digital Universe",
+    default: "Aether Search",
   },
   description:
     "Discover information at the speed of thought with Aether Search, your gateway to the digital cosmos.",

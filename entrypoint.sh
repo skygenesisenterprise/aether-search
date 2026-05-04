@@ -2,7 +2,7 @@
 set -e
 
 # =============================================================================
-# Company Website - Service Entry Point
+# Aether Search - Service Entry Point
 # =============================================================================
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/go/bin:/go/bin:/root/go/bin:$HOME/.local/share/corepack/shims:$HOME/.local/bin"
@@ -51,7 +51,7 @@ log_error() {
 display_header() {
     echo ""
     echo "╔══════════════════════════════════════════════════════════════════════╗"
-    echo "║                        Company Website                               ║"
+    echo "║                       Aether Search                                  ║"
     echo "║               Enterprise Account Management                          ║"
     echo "║                   Version 1.0.0-alpha                                ║"
     echo "╚══════════════════════════════════════════════════════════════════════╝"

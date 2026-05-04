@@ -1,10 +1,10 @@
 services:
-  company-website:
+  aethersearch:
     build:
       context: .
       dockerfile: Dockerfile.dev
-    image: skygenesisenterprise/company-website:latest
-    container_name: company-website
+    image: skygenesisenterprise/aethersearch:latest
+    container_name: aethersearch
     restart: unless-stopped
     ports:
       - "3000:3000"

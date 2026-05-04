@@ -1,10 +1,10 @@
 services:
-  company-website:
+  aethersearch:
     build:
       context: .
       dockerfile: Dockerfile.cloud
-    image: skygenesisenterprise/company-website:latest
-    container_name: company-website
+    image: skygenesisenterprise/aethersearch:latest
+    container_name: aethersearch
     restart: unless-stopped
     expose:
       - "3000"

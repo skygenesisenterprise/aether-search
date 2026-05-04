@@ -64,7 +64,7 @@ export function ImagesPage({ query, onSearch, onBack }: ImagesPageProps) {
       {/* Header */}
       <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
         <div className="flex items-center gap-6 px-6 py-4">
-          <button onClick={onBack} className="flex-shrink-0">
+          <button onClick={onBack} className="shrink-0">
             <AetherLogo />
           </button>
           <div className="flex-1 max-w-2xl">
@@ -127,7 +127,7 @@ export function ImagesPage({ query, onSearch, onBack }: ImagesPageProps) {
                   className="w-full h-auto transition-transform duration-300 group-hover:scale-105"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute inset-0 bg-linear-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                   <div className="absolute bottom-0 left-0 right-0 p-3">
                     <p className="text-sm font-medium text-foreground truncate">{image.title}</p>
                     <p className="text-xs text-muted-foreground">{image.source}</p>

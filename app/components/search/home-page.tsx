@@ -42,9 +42,6 @@ export function HomePage({ onSearch }: { onSearch: (query: string) => void }) {
         <div className="mb-10 flex flex-col items-center">
           <div className="relative mb-4">
             <div className="absolute inset-0 bg-primary/10 rounded-full blur-3xl scale-150" />
-            <div className="relative w-24 h-24 bg-linear-to-br from-primary via-accent to-primary rounded-full flex items-center justify-center shadow-2xl shadow-primary/20">
-              <span className="text-primary-foreground text-4xl font-bold">A</span>
-            </div>
           </div>
           <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-balance text-center">
             <span className="text-primary">Aether</span> Search
