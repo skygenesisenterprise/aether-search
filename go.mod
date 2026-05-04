@@ -1,4 +1,4 @@
-module github.com/skygenesisenterprise/company-website
+module github.com/skygenesisenterprise/aether-search
 
 go 1.25.5
 

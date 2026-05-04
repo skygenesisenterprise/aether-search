@@ -7,11 +7,11 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/skygenesisenterprise/company-website/server/src/config"
-	"github.com/skygenesisenterprise/company-website/server/src/interfaces"
-	"github.com/skygenesisenterprise/company-website/server/src/middleware"
-	"github.com/skygenesisenterprise/company-website/server/src/routes"
-	"github.com/skygenesisenterprise/company-website/server/src/services"
+	"github.com/skygenesisenterprise/aether-search/server/src/config"
+	"github.com/skygenesisenterprise/aether-search/server/src/interfaces"
+	"github.com/skygenesisenterprise/aether-search/server/src/middleware"
+	"github.com/skygenesisenterprise/aether-search/server/src/routes"
+	"github.com/skygenesisenterprise/aether-search/server/src/services"
 	"gorm.io/gorm"
 )
 
@@ -25,7 +25,7 @@ func displayBanner() {
 	fmt.Printf("\033[0;37m")
 	fmt.Printf("\n")
 	fmt.Printf("\033[1;33m    ╔══════════════════════════════════════════════════════════════╗\n")
-	fmt.Printf("\033[1;33m    ║                     Company Website                          ║\n")
+	fmt.Printf("\033[1;33m    ║                     Aether Search                            ║\n")
 	fmt.Printf("\033[1;33m    ║               Enterprise Account Management                  ║\n")
 	fmt.Printf("\033[1;33m    ║                   Version 1.0.0-alpha                        ║\n")
 	fmt.Printf("\033[1;33m    ╚══════════════════════════════════════════════════════════════╝\n")

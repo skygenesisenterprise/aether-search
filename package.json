@@ -1,7 +1,7 @@
 {
-  "name": "company-website",
+  "name": "aether-search",
   "version": "0.1.0",
-  "description": "Welcome to the official repository for the Sky Genesis Enterprise website.",
+  "description": "Welcome to the official repository for the Aether Search website.",
   "private": true,
   "type": "module",
   "workspaces": [
@@ -71,11 +71,11 @@
   "packageManager": "pnpm@8.15.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/skygenesisenterprise/company-website.git"
+    "url": "https://github.com/skygenesisenterprise/aether-search.git"
   },
   "keywords": [
     "website",
-    "company",
+    "aether-search",
     "skygenesisenterprise",
     "password-security",
     "password-management",
@@ -93,9 +93,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/skygenesisenterprise/company-website/issues"
+    "url": "https://github.com/skygenesisenterprise/aether-search/issues"
   },
-  "homepage": "https://github.com/skygenesisenterprise/company-website#readme",
+  "homepage": "https://github.com/skygenesisenterprise/aether-search#readme",
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix --quiet",
